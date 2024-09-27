@@ -1,0 +1,54 @@
+<div class="page-header">
+  <div class="header-wrapper row m-0">
+    <div class="header-logo-wrapper col-auto p-0">
+      <div class="logo-wrapper">
+        <a href="{{ route('dashboard')}}">
+          <img class="img-fluid" src="{{ asset('assets/images/logo.png') }}" alt="">
+        </a>
+      </div>
+      <div class="toggle-sidebar">
+        <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
+      </div>
+    </div>
+    <div class="left-header col-xxl-5 col-xl-6 col-lg-5 col-md-4 col-sm-3 p-0">
+      <div class="d-flex h-100">
+        <a href="{{route('bookings.create')}}" class="btn btn-success btn-md me-2"><i class="fa fa-plus"></i> Booking</a> 
+        <a href="{{route('rooms.available')}}" class="btn btn-secondary btn-md"><i class="fa fa-home"></i> Available Rooms</a> 
+      </div>
+    </div>
+    <div class="nav-right col-xxl-7 col-xl-6 col-md-7 col-8 pull-right right-header p-0 ms-auto">
+      <ul class="nav-menus">
+        <li>
+          <div class="mode">
+            <svg>
+              <use href="{{ asset('assets/svg/icon-sprite.svg#moon') }}"></use>
+            </svg>
+          </div>
+        </li>
+
+        <li class="profile-nav onhover-dropdown pe-0 py-0">
+          <div class="media profile-media">
+            <img class="b-r-10" src="{{asset('assets/images/user.png')}}" alt="" />
+            <div class="media-body">
+              <span>{{$user->employee->first_name}}</span>
+              <p class="mb-0 font-roboto">{{$user->getRoleNames()->implode('')}} <i class="middle fa fa-angle-down"></i></p>
+            </div>
+          </div>
+          <ul class="profile-dropdown onhover-show-div">
+            <li>
+              <a href="{{route('account')}}"><i data-feather="user"></i><span>Account</span></a>
+            </li>
+            @can('settings')
+            <li>
+              <a href="{{route('settings')}}"><i data-feather="settings"></i><span>Settings</span></a>
+            </li>
+            @endcan
+            <li>
+              <a href="{{route('logout')}}"><i data-feather="log-out"> </i><span>Log Out</span></a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
